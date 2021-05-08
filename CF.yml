@@ -1,0 +1,23 @@
+
+AWSTemplateFormatVersion: 2010-09-09 
+Metadata:
+  'AWS::CloudFormation::Designer': {}
+Resources:
+  DutchOfficehours:
+    Type: 'Custom::ServiceInstanceSchedule'
+    Properties:
+      Name: ATG-OfficeHours
+      NoStackPrefix: 'True'
+      Description: ATG Daily Office hour
+      ServiceToken: >-
+        arn:${AWS::Partition}:ec2:*:${AWS::AccountId}:instance/i-0eb761dd9b5c95043
+      Enforced: 'True'
+      Hibernate: 'True'
+      Timezone: indian/Reunion
+      Periods:
+        - Description: Opening hours on weekdays
+          BeginTime: '08:00'
+          EndTime: '09:00'
+          WeekDays: Mon-Sun
+        
+  
